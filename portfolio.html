@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0A0A0F"/>
+<title>Kapil Bhandari — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A0F;--bg2:#0F0F17;--sur:#13131E;--sur2:#1A1A28;
+  --b1:rgba(255,255,255,.07);--b2:rgba(255,255,255,.12);
+  --ac:#7C3AED;--ac2:#A855F7;--glow:rgba(124,58,237,.3);
+  --tx:#F0EEF8;--tx2:#9B9AB0;--tx3:#5C5B73;
+  --r:14px;--r2:10px;--hf:'Syne',sans-serif;--bf:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--bf);background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
+.logo{font-family:var(--hf);font-size:20px;font-weight:800;color:var(--tx);text-decoration:none}.logo span{color:var(--ac2)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--tx2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--tx);border-radius:2px;transition:all .3s}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(10,10,15,.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--hf);font-size:32px;font-weight:700;color:var(--tx);text-decoration:none}
+.mob-close{position:absolute;top:20px;right:24px;font-size:26px;background:none;border:none;color:var(--tx2);cursor:pointer}
+@media(max-width:640px){.nav-links{display:none}.ham{display:flex}}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 20px 60px;text-align:center;position:relative;z-index:1}
+.hero-inner{max-width:700px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);border-radius:40px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--ac2);letter-spacing:.5px;margin-bottom:24px;animation:fadeUp .7s ease both}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--ac2);animation:blink 1.4s ease-in-out infinite}
+.hero-name{font-family:var(--hf);font-size:clamp(48px,11vw,96px);font-weight:800;line-height:.95;letter-spacing:-3px;margin-bottom:18px;animation:fadeUp .7s .1s ease both}
+.hero-name .grad{display:block;background:linear-gradient(135deg,var(--ac2),#EC4899 60%,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(15px,3vw,20px);color:var(--tx2);margin-bottom:32px;animation:fadeUp .7s .2s ease both;line-height:1.6}
+.hero-sub strong{color:var(--tx);font-weight:600}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:50px;font-family:var(--bf);font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+.btn-p{background:var(--ac);color:#fff;box-shadow:0 0 24px var(--glow)}
+.btn-p:hover{background:var(--ac2);transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--tx);border:1.5px solid var(--b2)}
+.btn-o:hover{border-color:var(--ac2);color:var(--ac2)}
+.scroll-hint{margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--tx3);font-size:11px;letter-spacing:2px;text-transform:uppercase;animation:fadeUp .7s .5s ease both}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--ac2),transparent);animation:scrollDrop 1.8s ease-in-out infinite}
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.mesh::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 70%);top:-150px;left:-150px;animation:d1 18s ease-in-out infinite alternate}
+.mesh::after{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,.1),transparent 70%);bottom:-80px;right:-80px;animation:d2 22s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(60px,50px)}}
+@keyframes d2{to{transform:translate(-50px,-60px)}}
+section{position:relative;z-index:1}
+.wrap{max-width:1060px;margin:0 auto;padding:80px 20px}
+@media(max-width:640px){.wrap{padding:56px 16px}}
+.sec-lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--ac2);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.sec-lbl::before{content:'';display:block;width:24px;height:1.5px;background:var(--ac2)}
+.sec-title{font-family:var(--hf);font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+.sec-sub{font-size:15px;color:var(--tx2);max-width:520px;line-height:1.7}
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:640px){.about-grid{grid-template-columns:1fr;gap:32px}}
+.avatar-wrap{position:relative;display:flex;justify-content:center}
+.avatar{width:240px;height:240px;border-radius:28px;background:var(--sur2);border:1px solid var(--b2);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden;box-shadow:0 0 50px rgba(124,58,237,.18)}
+.avatar::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.12),transparent 60%)}
+.av-ring{position:absolute;inset:-14px;border-radius:36px;border:1.5px solid rgba(124,58,237,.18);pointer-events:none}
+.av-badge{position:absolute;bottom:-10px;right:-10px;background:var(--sur);border:1px solid var(--b2);border-radius:var(--r2);padding:9px 13px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.av-badge .dot{width:7px;height:7px;border-radius:50%;background:#10B981;animation:blink 1.4s infinite}
+.about-text p{font-size:15px;color:var(--tx2);line-height:1.8;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tag{padding:5px 12px;background:var(--sur2);border:1px solid var(--b1);border-radius:40px;font-size:12px;color:var(--tx2);font-weight:500}
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:44px}
+.skill-card{background:var(--sur);border:1px solid var(--b1);border-radius:var(--r);padding:20px 16px;text-align:center;transition:all .25s;position:relative;overflow:hidden}
+.skill-card:hover{border-color:var(--ac2);transform:translateY(-3px);box-shadow:0 10px 28px rgba(124,58,237,.18)}
+.sk-icon{font-size:28px;margin-bottom:9px}
+.sk-name{font-size:13px;font-weight:600;color:var(--tx)}
+.sk-lvl{font-size:10px;color:var(--tx3);margin-top:3px}
+#services{background:var(--bg2)}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:44px}
+.srv-card{background:var(--sur);border:1px solid var(--b1);border-radius:var(--r);padding:30px 26px;transition:all .3s;position:relative;overflow:hidden}
+.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),var(--ac2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.srv-card:hover{border-color:rgba(124,58,237,.3);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.srv-card:hover::after{transform:scaleX(1)}
+.srv-icon{width:50px;height:50px;border-radius:13px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.18);display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:18px}
+.srv-name{font-family:var(--hf);font-size:20px;font-weight:700;margin-bottom:10px}
+.srv-desc{font-size:14px;color:var(--tx2);line-height:1.7;margin-bottom:20px}
+.srv-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.srv-list li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2)}
+.srv-list li::before{content:"\2713";width:18px;height:18px;background:rgba(124,58,237,.12);color:var(--ac2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+#projects{background:var(--bg)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:44px}
+.proj-card{background:var(--sur);border:1px solid var(--b1);border-radius:var(--r);overflow:hidden;transition:all .3s}
+.proj-card:hover{border-color:rgba(124,58,237,.3);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.proj-thumb{height:170px;display:flex;align-items:center;justify-content:center;font-size:58px;position:relative;overflow:hidden}
+.proj-thumb::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(236,72,153,.12))}
+.proj-emoji{position:relative;z-index:1;filter:drop-shadow(0 3px 14px rgba(0,0,0,.5))}
+.proj-body{padding:20px}
+.ptags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ptag{font-size:10px;font-weight:600;color:var(--ac2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.18);padding:2px 9px;border-radius:20px}
+.proj-name{font-family:var(--hf);font-size:18px;font-weight:700;margin-bottom:7px}
+.proj-desc{font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:16px}
+.proj-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--ac2);text-decoration:none;background:none;border:none;cursor:pointer;font-family:var(--bf);padding:0;transition:gap .2s}
+.proj-link:hover{gap:9px}
+.nfc-thumb{position:relative;cursor:pointer;background:linear-gradient(135deg,#0d0408,#1a0a18)!important}
+.nfc-thumb::before{display:none}
+.nfc-thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;pointer-events:none}
+.nfc-fc-badge{position:absolute;top:10px;left:10px;background:rgba(0,82,204,.88);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 9px;font-size:10px;font-weight:700;color:#fff;z-index:3;pointer-events:none}
+.nfc-no-src{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;z-index:4;background:rgba(13,4,8,.9);padding:16px;text-align:center}
+.nfc-no-src-icon{font-size:34px}
+.nfc-no-src-title{color:#fff;font-size:13px;font-weight:700}
+.nfc-no-src-sub{color:rgba(255,255,255,.45);font-size:10px;line-height:1.5}
+.nfc-no-src-code{color:#A855F7;font-family:monospace;font-size:11px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);border-radius:6px;padding:4px 10px;margin-top:4px}
+.nfc-play{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:2}
+.nfc-play.show{display:flex}
+.nfc-play-btn{width:52px;height:52px;border-radius:50%;background:rgba(0,82,204,.88);border:2px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.proj-card:hover .nfc-play-btn{transform:scale(1.1)}
+.nfc-play-lbl{color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);color:#fca5a5;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.4px;margin-bottom:9px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#ef4444;animation:blink 1.2s ease-in-out infinite}
+#vidModal{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:0}
+#vidModal.open{display:flex}
+.vid-shell{position:relative;width:100%;max-width:min(95vw,calc(92vh*16/9));aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.85)}
+#vidPlayer{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.vid-close{position:absolute;top:10px;right:10px;z-index:10;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:12px;font-weight:700;cursor:pointer;padding:6px 12px;border-radius:20px;transition:all .2s;font-family:var(--bf);backdrop-filter:blur(4px)}
+.vid-close:hover{background:rgba(255,255,255,.18);color:#fff}
+.vid-label{position:absolute;top:10px;left:12px;z-index:10;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:5px 11px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.3px;pointer-events:none;backdrop-filter:blur(4px)}
+.vid-no-src{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#090909;z-index:5}
+.vid-no-src.hidden{display:none}
+.vid-no-src p{color:rgba(255,255,255,.45);font-size:14px;font-weight:500;text-align:center;line-height:1.8}
+.vid-no-src code{color:#A855F7;font-family:monospace;font-size:13px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);border-radius:6px;padding:5px 12px;display:inline-block}
+#earsModal{position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px}
+#earsModal.open{display:flex}
+.ears-shell{position:relative;width:100%;max-width:860px;height:88vh;max-height:820px;background:#F8FAFC;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6);display:flex;flex-direction:column;animation:popIn .3s cubic-bezier(.34,1.2,.64,1)}
+.ears-topbar{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#1e1e2e;flex-shrink:0;border-radius:18px 18px 0 0}
+.e-dots{display:flex;gap:5px}
+.e-dot{width:11px;height:11px;border-radius:50%}
+.e-dot.r{background:#ff5f57;cursor:pointer}
+.e-url{flex:1;background:rgba(255,255,255,.07);border-radius:5px;padding:5px 11px;font-size:11px;color:rgba(255,255,255,.45);font-family:monospace}
+.ears-close-btn{background:none;border:none;color:rgba(255,255,255,.4);font-size:16px;cursor:pointer;padding:4px 7px;border-radius:5px;transition:all .2s}
+.ears-close-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.ears-content{flex:1;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.ea{font-family:var(--bf),sans-serif;color:#0F172A;flex:1;display:flex;flex-direction:column;overflow:hidden;background:#F8FAFC}
+.ea-hdr{background:#B91C1C;padding:12px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0;box-shadow:0 2px 10px rgba(185,28,28,.3)}
+.ea-hdr-icon{width:38px;height:38px;background:rgba(255,255,255,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ea-hdr h1{color:#fff;font-size:15px;font-weight:800;letter-spacing:-.3px}
+.ea-hdr p{color:rgba(255,255,255,.7);font-size:10px;font-weight:500;margin-top:1px}
+.ea-clock{margin-left:auto;color:rgba(255,255,255,.9);font-size:12px;font-weight:700}
+.ea-layout{flex:1;display:flex;overflow:hidden}
+.ea-side{display:none;flex-direction:column;width:190px;background:#fff;border-right:1px solid #E2E8F0;padding:14px 10px;flex-shrink:0}
+@media(min-width:560px){.ea-side{display:flex}}
+.ea-sb-btn{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:9px;border:none;background:none;color:#475569;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;width:100%;text-align:left;transition:background .15s,color .15s;margin-bottom:3px}
+.ea-sb-btn:hover{background:#F1F5F9;color:#0F172A}
+.ea-sb-btn.active{background:#FEF2F2;color:#B91C1C}
+.ea-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.ea-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+.ea-pg{display:none;padding:16px}
+.ea-pg.active{display:block}
+.ea-bnav{display:flex;background:#fff;border-top:1px solid #E2E8F0;flex-shrink:0}
+@media(min-width:560px){.ea-bnav{display:none}}
+.ea-nb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:none;cursor:pointer;padding:10px 4px;position:relative}
+.ea-nb-icon{font-size:19px;transition:transform .2s}
+.ea-nb-lbl{font-size:9px;font-weight:600;color:#94A3B8}
+.ea-nb.active .ea-nb-icon{transform:scale(1.1)}
+.ea-nb.active .ea-nb-lbl{color:#B91C1C}
+.ea-nb.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:3px;background:#B91C1C;border-radius:0 0 4px 4px}
+.ea-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+@media(min-width:400px){.ea-stats{grid-template-columns:repeat(4,1fr)}}
+.ea-stat{background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.07);border:1px solid #E2E8F0;display:flex;align-items:flex-start;gap:9px}
+.ea-si{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ea-sn{font-size:24px;font-weight:800;line-height:1;letter-spacing:-1px}
+.ea-sl{font-size:11px;font-weight:600;color:#475569;margin-top:2px}
+.ea-alert{background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.ea-adot{width:8px;height:8px;border-radius:50%;background:#B91C1C;flex-shrink:0;animation:epulse 1.4s ease-in-out infinite}
+.ea-atxt{font-size:12px;font-weight:600;color:#B91C1C;flex:1}
+.ea-acls{background:none;border:none;font-size:15px;color:#B91C1C;cursor:pointer}
+.ea-sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.ea-stitle{font-size:13px;font-weight:800;color:#0F172A}
+.ea-slink{font-size:12px;font-weight:600;color:#B91C1C;background:none;border:none;cursor:pointer;font-family:inherit}
+.ea-inc{background:#fff;border-radius:10px;border:1px solid #E2E8F0;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:12px;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.ea-sbar{width:4px;border-radius:4px;flex-shrink:0;align-self:stretch;min-height:40px}
+.ea-sbar.critical{background:#B91C1C}.ea-sbar.major{background:#D97706}.ea-sbar.minor{background:#059669}
+.ea-ibody{flex:1;min-width:0}
+.ea-itop{display:flex;align-items:center;gap:5px;margin-bottom:4px;flex-wrap:wrap}
+.ea-badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700}
+.ea-badge.critical{background:#FEF2F2;color:#B91C1C}.ea-badge.major{background:#FFFBEB;color:#D97706}
+.ea-badge.minor{background:#ECFDF5;color:#059669}.ea-badge.active{background:#EFF6FF;color:#1D4ED8}
+.ea-badge.resolved{background:#F1F5F9;color:#94A3B8}
+.ea-iid{font-size:9px;font-weight:700;color:#94A3B8;margin-left:auto}
+.ea-itype{font-size:13px;font-weight:700;color:#0F172A;margin-bottom:3px}
+.ea-iloc{font-size:11px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ea-imeta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.ea-im{font-size:10px;color:#94A3B8;font-weight:500;display:flex;align-items:center;gap:3px}
+.ea-iacts{display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.ea-abt{padding:4px 9px;border-radius:6px;font-size:10px;font-weight:700;border:none;cursor:pointer;font-family:inherit}
+.ea-abt.resolve{background:#ECFDF5;color:#059669}.ea-abt.delete{background:#FEF2F2;color:#B91C1C}
+.ea-empty{text-align:center;padding:32px 14px;color:#94A3B8}
+.ea-ei{font-size:36px;margin-bottom:9px}
+.ea-etitle{font-size:14px;font-weight:700;color:#475569;margin-bottom:4px}
+.ea-edesc{font-size:12px}
+.ea-card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px;margin-bottom:12px}
+.ea-ctitle{font-size:14px;font-weight:800;color:#0F172A;margin-bottom:14px}
+.ea-fg{margin-bottom:13px}
+.ea-lbl{display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:5px}
+.ea-fc{width:100%;background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:7px;padding:11px 12px;font-size:15px;font-family:inherit;color:#0F172A;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.ea-fc:focus{border-color:#B91C1C;box-shadow:0 0 0 3px rgba(185,28,28,.08)}
+select.ea-fc{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:32px}
+.ea-frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ea-pills{display:flex;gap:7px;flex-wrap:wrap}
+.ea-pill{flex:1;min-width:76px;position:relative;cursor:pointer}
+.ea-pill input{position:absolute;opacity:0;width:0;height:0}
+.ea-pinn{display:flex;align-items:center;justify-content:center;gap:4px;padding:9px 6px;border:2px solid #E2E8F0;border-radius:7px;font-size:12px;font-weight:700;color:#94A3B8;transition:all .2s;background:#F8FAFC}
+.ea-pill input:checked~.ea-pinn{color:#fff}
+.ea-pill.minor input:checked~.ea-pinn{background:#059669;border-color:#059669}
+.ea-pill.major input:checked~.ea-pinn{background:#D97706;border-color:#D97706}
+.ea-pill.critical input:checked~.ea-pinn{background:#B91C1C;border-color:#B91C1C}
+.ea-btn-p{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;background:#B91C1C;color:#fff;border:none;border-radius:7px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;transition:opacity .2s}
+.ea-btn-p:active{opacity:.8}
+.ea-btn-o{display:flex;align-items:center;justify-content:center;width:100%;padding:11px;background:none;color:#475569;border:1.5px solid #CBD5E1;border-radius:7px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:7px}
+.ea-filter{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
+.ea-filter::-webkit-scrollbar{display:none}
+.ea-chip{flex-shrink:0;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:700;border:1.5px solid #E2E8F0;background:#fff;color:#475569;cursor:pointer;font-family:inherit}
+.ea-chip.active{background:#B91C1C;border-color:#B91C1C;color:#fff}
+.ea-ccard{background:#fff;border-radius:10px;border:1px solid #E2E8F0;padding:13px;display:flex;align-items:center;gap:11px;margin-bottom:9px;cursor:pointer;transition:transform .15s}
+.ea-ccard:active{transform:scale(.98)}
+@media(min-width:400px){.ea-cgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.ea-cgrid .ea-ccard{margin-bottom:0}}
+.ea-ci{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.ea-cn{font-size:13px;font-weight:700;color:#0F172A}
+.ea-cd{font-size:11px;color:#94A3B8;margin-top:1px}
+.ea-cr{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.ea-cnum{font-size:17px;font-weight:800;color:#B91C1C;letter-spacing:-1px}
+.ea-cbtn{background:#059669;color:#fff;border:none;border-radius:20px;padding:4px 9px;font-family:inherit;font-size:10px;font-weight:700;cursor:pointer}
+.ea-tip{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid #E2E8F0;align-items:flex-start}
+.ea-tip:last-child{border-bottom:none}
+.ea-tn{width:22px;height:22px;background:#B91C1C;color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.ea-tt{font-size:12px;line-height:1.6;color:#475569;font-weight:500;padding-top:2px}
+.ea-call-ov{position:absolute;inset:0;background:rgba(15,23,42,.5);z-index:500;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(5px)}
+.ea-call-ov.open{display:flex}
+.ea-call-box{background:#fff;border-radius:18px 18px 0 0;padding:10px 20px 24px;width:100%;max-width:460px;animation:eSlideUp .25s cubic-bezier(.32,1.2,.64,1)}
+.ea-call-handle{width:34px;height:4px;background:#CBD5E1;border-radius:4px;margin:0 auto 14px}
+.ea-call-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 11px}
+.ea-call-svc{text-align:center;font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.ea-call-name{text-align:center;font-size:18px;font-weight:800;color:#0F172A;margin-bottom:2px}
+.ea-call-num{text-align:center;font-size:32px;font-weight:800;color:#B91C1C;letter-spacing:-1px;margin-bottom:4px}
+.ea-call-desc{text-align:center;font-size:11px;color:#94A3B8;margin-bottom:20px}
+.ea-call-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.ea-cancel{padding:13px;border-radius:7px;border:1.5px solid #CBD5E1;background:none;font-family:inherit;font-size:13px;font-weight:700;color:#475569;cursor:pointer}
+.ea-dial{padding:13px;border-radius:7px;border:none;background:#059669;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;text-decoration:none}
+.ea-ring{animation:eRing 1s ease-in-out infinite;display:inline-block}
+.ea-succ-ov{position:absolute;inset:0;background:rgba(15,23,42,.45);z-index:600;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.ea-succ-ov.open{display:flex}
+.ea-succ-box{background:#fff;border-radius:16px;padding:26px 22px;text-align:center;max-width:290px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,.12);animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
+.ea-succ-chk{width:62px;height:62px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px}
+.ea-succ-title{font-size:18px;font-weight:800;color:#0F172A;margin-bottom:5px}
+.ea-succ-id{font-size:13px;font-weight:700;color:#B91C1C;margin-bottom:4px}
+.ea-succ-sub{font-size:11px;color:#94A3B8;margin-bottom:18px;line-height:1.6}
+.ea-toast{position:absolute;bottom:14px;left:12px;right:12px;background:#0F172A;color:#fff;padding:11px 14px;border-radius:7px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:7px;box-shadow:0 6px 20px rgba(0,0,0,.18);z-index:700;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
+.ea-toast.show{opacity:1;transform:translateY(0)}
+#contact{background:var(--bg2)}
+.con-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;margin-top:44px}
+@media(max-width:640px){.con-grid{grid-template-columns:1fr;gap:28px}}
+.con-info p{font-size:15px;color:var(--tx2);line-height:1.75;margin-bottom:28px}
+.con-links{display:flex;flex-direction:column;gap:12px}
+.con-link{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px 16px;background:var(--sur);border:1px solid var(--b1);border-radius:var(--r2);transition:all .2s}
+.con-link:hover{border-color:var(--ac2);transform:translateX(3px)}
+.con-link-icon{font-size:18px;width:40px;height:40px;background:rgba(124,58,237,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.con-lbl{font-size:11px;color:var(--tx3);margin-bottom:1px;font-weight:500}
+.con-val{font-size:14px;color:var(--tx);font-weight:600}
+.form{display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{font-size:12px;font-weight:600;color:var(--tx2)}
+.fc{background:var(--sur);border:1.5px solid var(--b1);border-radius:var(--r2);padding:13px 14px;font-size:16px;font-family:var(--bf);color:var(--tx);outline:none;transition:border-color .2s;-webkit-appearance:none;width:100%}
+.fc:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+.fc::placeholder{color:var(--tx3)}
+textarea.fc{resize:vertical;min-height:110px}
+footer{position:relative;z-index:1;background:var(--bg);border-top:1px solid var(--b1);padding:24px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-copy{font-size:13px;color:var(--tx3)}.f-copy strong{color:var(--ac2)}
+.f-love{font-size:12px;color:var(--tx3)}
+@media(max-width:520px){footer{flex-direction:column;text-align:center}}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--sur2);border:1px solid var(--b2);color:var(--tx);padding:12px 22px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.4);z-index:500;opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.rev{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.rev.on{opacity:1;transform:none}
+.rev-g>*{opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s ease}
+.rev-g.on>*:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+.rev-g.on>*:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
+.rev-g.on>*:nth-child(3){opacity:1;transform:none;transition-delay:.16s}
+.rev-g.on>*:nth-child(4){opacity:1;transform:none;transition-delay:.22s}
+.rev-g.on>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.rev-g.on>*:nth-child(6){opacity:1;transform:none;transition-delay:.34s}
+.rev-g.on>*:nth-child(7){opacity:1;transform:none;transition-delay:.4s}
+.rev-g.on>*:nth-child(8){opacity:1;transform:none;transition-delay:.46s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes scrollDrop{0%{transform:scaleY(0);transform-origin:top;opacity:0}40%{transform:scaleY(1);transform-origin:top;opacity:1}60%{transform:scaleY(1);transform-origin:bottom;opacity:1}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
+@keyframes popIn{from{transform:scale(.82);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes epulse{0%,100%{box-shadow:0 0 0 0 rgba(185,28,28,.5)}50%{box-shadow:0 0 0 6px rgba(185,28,28,0)}}
+@keyframes eSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes eRing{0%,100%{transform:rotate(0)}10%{transform:rotate(-15deg)}20%{transform:rotate(15deg)}30%{transform:rotate(-10deg)}40%{transform:rotate(10deg)}50%{transform:rotate(0)}}
+</style>
+</head>
+<body>
+<div class="mesh"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="#hero" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+<nav>
+  <a href="#hero" class="logo">KB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="ham" onclick="toggleMenu()" aria-label="menu"><span></span><span></span><span></span></button>
+</nav>
+<section id="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><div class="eyebrow-dot"></div>Available for work</div>
+    <h1 class="hero-name">Kapil<span class="grad">Bhandari</span></h1>
+    <p class="hero-sub"><strong>Web Developer</strong>  building digital experiences that look great &amp; work beautifully</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-p">View My Work &darr;</a>
+      <a href="#contact" class="btn btn-o">Get In Touch</a>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+  </div>
+</section>
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="avatar-wrap rev">
+        <div class="avatar">&#128104;&#8205;&#128187;<div class="av-ring"></div></div>
+        <div class="av-badge"><div class="dot"></div>Open to opportunities</div>
+      </div>
+      <div class="about-text rev">
+        <div class="sec-lbl">About Me</div>
+        <h2 class="sec-title">Passionate about<br/>crafting the web</h2>
+        <p>Hi! I'm <strong style="color:var(--tx)">Kapil Bhandari</strong>, a fresher web developer with a love for building clean, fast, and user-friendly websites. I enjoy turning ideas into reality through code.</p>
+        <p>Beyond development, I create engaging digital content &mdash; from writing and design to video &mdash; helping brands tell their story and connect with their audience online.</p>
+        <div class="tags">
+          <span class="tag">&#127891; Developer</span>
+          <span class="tag">&#128161; Problem Solver</span>
+          <span class="tag">&#9997;&#65039; Content Creation</span>
+          <span class="tag">&#128241; Social media handling</span>
+          <span class="tag">&#128640; Fast Learner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skills">
+  <div class="wrap">
+    <div class="rev">
+      <div class="sec-lbl">What I Know</div>
+      <h2 class="sec-title">My Skills</h2>
+      <p class="sec-sub">Technologies and tools I work with to bring projects to life.</p>
+    </div>
+    <div class="skills-grid rev-g">
+      <div class="skill-card"><div class="sk-icon">&#127760;</div><div class="sk-name">HTML5</div><div class="sk-lvl">Structure</div></div>
+      <div class="skill-card"><div class="sk-icon">&#127912;</div><div class="sk-name">CSS</div><div class="sk-lvl">Responsive &amp; Animations</div></div>
+      <div class="skill-card"><div class="sk-icon">&#9889;</div><div class="sk-name">JavaScript</div><div class="sk-lvl">js</div></div>
+      <div class="skill-card"><div class="sk-icon">&#128241;</div><div class="sk-name">Responsive Design</div><div class="sk-lvl">Mobile-responsive</div></div>
+     
+      <div class="skill-card"><div class="sk-icon">&#127917;</div><div class="sk-name">UI</div><div class="sk-lvl">UI Design</div></div>
+     
+      <div class="skill-card"><div class="sk-icon">&#127916;</div><div class="sk-name">Video Editing</div><div class="sk-lvl">Reels &amp; Content</div></div>
+    </div>
+  </div>
+</section>
+<section id="services">
+  <div class="wrap">
+    <div class="rev">
+      <div class="sec-lbl">What I Offer</div>
+      <h2 class="sec-title">Services</h2>
+      <p class="sec-sub">Two core services designed to grow your digital presence.</p>
+    </div>
+    <div class="srv-grid rev-g">
+      <div class="srv-card">
+        <div class="srv-icon">&#127760;</div>
+        <div class="srv-name">Website Development</div>
+        <div class="srv-desc">Modern, fast, and mobile-friendly websites built from scratch using HTML, CSS, and JavaScript.</div>
+        <ul class="srv-list">
+          <li>Custom responsive design</li><li>Fast loading &amp; optimized code</li><li>Cross-browser compatible</li>
+          <li>Contact forms &amp; integrations</li><li>Landing pages &amp; portfolios</li><li>Ongoing maintenance</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">&#9997;&#65039;</div>
+        <div class="srv-name">Content Creation</div>
+        <div class="srv-desc">Compelling digital content &mdash; social media handling ,  and visuals that engage your audience.</div>
+        <ul class="srv-list">
+         <li>Social media post captions</li><li>Website content ideas</li>
+          <li>Brand storytelling</li><li>Short-form video scripts</li><li>Video Editing</li><li>Marketing tips</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+</section>
+<section id="projects">
+  <div class="wrap">
+    <div class="rev">
+      <div class="sec-lbl">My Work</div>
+      <h2 class="sec-title">Projects</h2>
+      <p class="sec-sub">A selection of projects I've built &mdash; each one a learning experience.</p>
+    </div>
+    <div class="proj-grid rev-g">
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#1a0505,#3b0a0a);cursor:pointer" onclick="openEars()">
+          <span class="proj-emoji">&#128680;</span>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;background:rgba(185,28,28,.4);z-index:2" class="ears-hover-ov">
+            <span style="color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px">&#9658; Launch App</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#fca5a5;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.4px;margin-bottom:9px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#ef4444;display:inline-block;animation:blink 1.2s infinite"></span>LIVE DEMO
+          </div>
+          <div class="ptags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JavaScript</span></div>
+          <div class="proj-name">Emergency Response System</div>
+          <div class="proj-desc">A mobile-friendly web app to report, track, and manage road accidents with real-time emergency contact dialing.</div>
+          <button class="proj-link" onclick="openEars()">Launch App &rarr;</button>
+        </div>
+      </div>
+      <div class="proj-card" id="kmCard" style="cursor:pointer" onclick="openKapilMart()">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#0d1b2a,#1b4332);cursor:pointer;position:relative">
+          <span class="proj-emoji">&#128722;</span>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;background:rgba(212,175,55,.25);z-index:2" class="km-hover-ov">
+            <span style="color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px">&#9658; Launch Store</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);color:#D4AF37;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.4px;margin-bottom:9px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#D4AF37;display:inline-block;animation:blink 1.2s infinite"></span>LIVE DEMO
+          </div>
+          <div class="ptags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">Bootstrap</span><span class="ptag">JavaScript</span></div>
+          <div class="proj-name">KapilMart — Premium E-Shop</div>
+          <div class="proj-desc">A luxury e-commerce store with product catalog, shopping cart, hero slider, and mobile-first responsive design.</div>
+          <button class="proj-link" onclick="openKapilMart()">Launch Store &rarr;</button>
+        </div>
+      </div>
+      <!-- ===== NOIDA FC VIDEO CARD ===== -->
+      <div class="proj-card" id="nfcCard">
+        <div class="proj-thumb nfc-thumb" id="nfcThumbWrap">
+          <video id="nfcThumbVid" muted playsinline loop preload="none"></video>
+          <div class="nfc-fc-badge">&#9917; NOIDA FC</div>
+          <!-- Shown when VIDEO_SRC is empty -->
+          <div class="nfc-no-src" id="nfcNoSrc">
+            <div class="nfc-no-src-icon">&#127916;</div>
+            <div class="nfc-no-src-title">Noida FC &mdash; Jersey Reveal</div>
+            <div class="nfc-no-src-sub">Set your video path in the code:</div>
+            <div class="nfc-no-src-code">VIDEO_SRC = 'your-video.mp4'</div>
+          </div>
+          <!-- Shown when VIDEO_SRC is set -->
+          <div class="nfc-play" id="nfcPlayOverlay" onclick="openVid()">
+            <div class="nfc-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="nfc-play-lbl">Watch Video</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="live-badge"><div class="live-dot"></div>VIDEO EDIT</div>
+          <div class="ptags"><span class="ptag">Video Editing</span><span class="ptag">Motion Graphics</span><span class="ptag">Sports</span></div>
+          <div class="proj-name">Noida FC &mdash; Jersey Reveal</div>
+          <div class="proj-desc">A cinematic jersey reveal video edit for Noida Football Club showcasing the new kit with dynamic motion graphics.</div>
+          <button class="proj-link" onclick="openVid()">&#9658; Play Video &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="wrap">
+    <div class="rev">
+      <div class="sec-lbl">Get In Touch</div>
+      <h2 class="sec-title">Let's Work Together</h2>
+      <p class="sec-sub">Have a project in mind or just want to say hello?</p>
+    </div>
+    <div class="con-grid">
+      <div class="con-info rev">
+        <p>I'm open to full-time opportunities. Whether it's a new website, content strategy, or just a quick question &mdash; drop me a message!</p>
+        <div class="con-links">
+          <a href="mailto:kapilbhandari@email.com" class="con-link">
+            <div class="con-link-icon">&#128231;</div>
+            <div><div class="con-lbl">Email</div><div class="con-val">kapilabhandari16@email.com</div></div>
+          </a>
+          <a href="https://linkedin.com" class="con-link" target="_blank" rel="noopener">
+            <div class="con-link-icon">&#128188;</div>
+            <div><div class="con-lbl">LinkedIn</div><div class="con-val">linkedin.com/in/kapilbhandari</div></div>
+          </a>
+         
+        </div>
+      </div>
+      <div class="rev">
+        <form class="form" onsubmit="handleForm(event)">
+          <div class="fg"><label>Your Name</label><input type="text" class="fc" placeholder="Enter your name" required/></div>
+          <div class="fg"><label>Email Address</label><input type="email" class="fc" placeholder="kapil@example.com" required/></div>
+          <div class="fg"><label>Service</label>
+            <select class="fc" required>
+              <option value="">&#8212; Select a service &#8212;</option>
+              <option>Website Development</option><option>Content Creation</option><option>Both Services</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Message</label><textarea class="fc" placeholder="how can i help you......"></textarea></div>
+          <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;border-radius:var(--r2)">Send Message &#9993;&#65039;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="f-copy">&copy; 2025 <strong>Kapil Bhandari</strong>. All rights reserved.</div>
+  <div class="f-love">Made with &#10084;&#65039; &amp; lots of &#9749;</div>
+</footer>
+<div id="toast"></div>
+<!-- VIDEO MODAL -->
+<div id="vidModal" onclick="if(event.target===this)closeVid()">
+  <div class="vid-shell">
+    <div class="vid-label">&#9917; Noida FC &mdash; Jersey Reveal</div>
+    <button class="vid-close" onclick="closeVid()">&#10005; Close</button>
+    <div class="vid-no-src" id="vidNoSrc">
+      <div style="font-size:48px;margin-bottom:8px">&#127916;</div>
+      <p>No video source set.<br/>Open the HTML file and update:<br/><code>VIDEO_SRC = 'your-video.mp4'</code></p>
+    </div>
+    <video id="vidPlayer" controls preload="none" style="display:none"></video>
+  </div>
+</div>
+<!-- KAPILMART MODAL -->
+<div id="kmModal" onclick="if(event.target===this)closeKapilMart()" style="position:fixed;inset:0;z-index:9100;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;padding:0">
+  <div style="position:relative;width:100%;max-width:min(96vw,1100px);height:92vh;background:#0f0f0f;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.9);display:flex;flex-direction:column">
+    <!-- Browser chrome bar -->
+    <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#1e1e1e;flex-shrink:0;border-radius:14px 14px 0 0;border-bottom:1px solid rgba(212,175,55,.2)">
+      <div style="display:flex;gap:5px">
+        <div style="width:11px;height:11px;border-radius:50%;background:#ff5f57;cursor:pointer" onclick="closeKapilMart()"></div>
+        <div style="width:11px;height:11px;border-radius:50%;background:#febc2e"></div>
+        <div style="width:11px;height:11px;border-radius:50%;background:#28c840"></div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,.07);border-radius:5px;padding:5px 11px;font-size:11px;color:rgba(255,255,255,.45);font-family:monospace">&#128274; kapilmart.in — Premium E-Shop</div>
+      <button onclick="closeKapilMart()" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:16px;cursor:pointer;padding:4px 8px;border-radius:5px;font-family:inherit">&#10005;</button>
+    </div>
+    <!-- iframe containing KapilMart -->
+    <iframe id="kmFrame" src="about:blank" style="flex:1;width:100%;border:none;background:#0f0f0f" title="KapilMart E-Shop"></iframe>
+  </div>
+</div>
+<!-- EARS MODAL -->
+<div id="earsModal" onclick="if(event.target===this)closeEars()">
+  <div class="ears-shell">
+    <div class="ears-topbar">
+      <div class="e-dots">
+        <div class="e-dot r" onclick="closeEars()" title="Close"></div>
+        <div class="e-dot" style="background:#febc2e"></div>
+        <div class="e-dot" style="background:#28c840"></div>
+      </div>
+      <div class="e-url">&#128274; ears-emergency-response.app</div>
+      <button class="ears-close-btn" onclick="closeEars()">&#10005;</button>
+    </div>
+    <div class="ears-content">
+      <div class="ea">
+        <div class="ea-hdr">
+          <div class="ea-hdr-icon">&#128680;</div>
+          <div><h1>E.A.R.S</h1><p>Emergency Accident Response System</p></div>
+          <div class="ea-clock" id="eClock">--:--</div>
+        </div>
+        <div class="ea-layout">
+          <aside class="ea-side">
+            <button class="ea-sb-btn active" onclick="eGo('dash',this)" data-p="dash"><span>&#127968;</span> Dashboard</button>
+            <button class="ea-sb-btn" onclick="eGo('report',this)" data-p="report"><span>&#128203;</span> Report Accident</button>
+            <button class="ea-sb-btn" onclick="eGo('incs',this)" data-p="incs"><span>&#128196;</span> All Incidents</button>
+            <button class="ea-sb-btn" onclick="eGo('contacts',this)" data-p="contacts"><span>&#128222;</span> Emergency Contacts</button>
+          </aside>
+          <div class="ea-main">
+            <div class="ea-scroll">
+              <div id="ep-dash" class="ea-pg active">
+                <div id="eAlert" class="ea-alert"><div class="ea-adot"></div><div class="ea-atxt"><span id="eCrit">0</span> critical incident(s) need attention</div><button class="ea-acls" onclick="this.parentElement.style.display='none'">&#215;</button></div>
+                <div class="ea-stats">
+                  <div class="ea-stat"><div class="ea-si" style="background:#FEF2F2">&#128308;</div><div><div class="ea-sn" style="color:#B91C1C" id="es-c">0</div><div class="ea-sl">Critical</div></div></div>
+                  <div class="ea-stat"><div class="ea-si" style="background:#FFFBEB">&#128993;</div><div><div class="ea-sn" style="color:#D97706" id="es-a">0</div><div class="ea-sl">Active</div></div></div>
+                  <div class="ea-stat"><div class="ea-si" style="background:#ECFDF5">&#9989;</div><div><div class="ea-sn" style="color:#059669" id="es-r">0</div><div class="ea-sl">Resolved</div></div></div>
+                  <div class="ea-stat"><div class="ea-si" style="background:#EFF6FF">&#128203;</div><div><div class="ea-sn" style="color:#1D4ED8" id="es-t">0</div><div class="ea-sl">Total</div></div></div>
+                </div>
+                <div class="ea-sh"><span class="ea-stitle">Recent Incidents</span><button class="ea-slink" onclick="eGo('incs',document.querySelector('[data-p=incs]'))">View all &rarr;</button></div>
+                <div id="eRecent"><div class="ea-empty"><div class="ea-ei">&#128461;</div><div class="ea-etitle">No incidents yet</div><div class="ea-edesc">Tap Report to log your first incident</div></div></div>
+              </div>
+              <div id="ep-report" class="ea-pg">
+                <div class="ea-card">
+                  <div class="ea-ctitle">&#128680; Report New Accident</div>
+                  <div class="ea-fg"><label class="ea-lbl">Accident Type *</label>
+                    <select class="ea-fc" id="eType"><option value="">&#8212; Select type &#8212;</option><option>Multi-vehicle Collision</option><option>Single Vehicle Crash</option><option>Pedestrian Hit</option><option>Motorcycle Accident</option><option>Hit and Run</option><option>Vehicle Fire</option><option>Road Obstruction</option></select>
+                  </div>
+                  <div class="ea-fg"><label class="ea-lbl">Location / Address *</label><input type="text" class="ea-fc" id="eLoc" placeholder="e.g. MG Road, Bengaluru"/></div>
+                  <div class="ea-frow">
+                    <div class="ea-fg" style="margin-bottom:0"><label class="ea-lbl">Vehicles</label><select class="ea-fc" id="eVeh"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5+</option></select></div>
+                    <div class="ea-fg" style="margin-bottom:0"><label class="ea-lbl">Injured</label><input type="number" class="ea-fc" id="eInj" min="0" value="0" inputmode="numeric"/></div>
+                  </div>
+                  <div class="ea-fg" style="margin-top:12px"><label class="ea-lbl">Fatalities</label><input type="number" class="ea-fc" id="eFat" min="0" value="0" inputmode="numeric"/></div>
+                  <div class="ea-fg"><label class="ea-lbl">Severity *</label>
+                    <div class="ea-pills">
+                      <label class="ea-pill minor"><input type="radio" name="esev" value="minor"/><div class="ea-pinn">&#128994; Minor</div></label>
+                      <label class="ea-pill major"><input type="radio" name="esev" value="major"/><div class="ea-pinn">&#128993; Major</div></label>
+                      <label class="ea-pill critical"><input type="radio" name="esev" value="critical"/><div class="ea-pinn">&#128308; Critical</div></label>
+                    </div>
+                  </div>
+                  <div class="ea-fg"><label class="ea-lbl">Notes</label><textarea class="ea-fc" id="eNotes" rows="3" placeholder="Road blocked? Trapped persons?..." style="resize:vertical"></textarea></div>
+                  <div class="ea-fg" style="margin-bottom:0"><label class="ea-lbl">Reporter (optional)</label><input type="text" class="ea-fc" id="eRep" placeholder="Your name or leave blank"/></div>
+                  <button class="ea-btn-p" onclick="eSubmit()">&#128680; Submit Report</button>
+                  <button class="ea-btn-o" onclick="eClear()">Clear Form</button>
+                </div>
+              </div>
+              <div id="ep-incs" class="ea-pg">
+                <div class="ea-filter">
+                  <button class="ea-chip active" onclick="eFilter('','',this)">All</button>
+                  <button class="ea-chip" onclick="eFilter('critical','',this)">&#128308; Critical</button>
+                  <button class="ea-chip" onclick="eFilter('major','',this)">&#128993; Major</button>
+                  <button class="ea-chip" onclick="eFilter('minor','',this)">&#128994; Minor</button>
+                  <button class="ea-chip" onclick="eFilter('','active',this)">Active</button>
+                  <button class="ea-chip" onclick="eFilter('','resolved',this)">Resolved</button>
+                </div>
+                <div id="eAll"><div class="ea-empty"><div class="ea-ei">&#128196;</div><div class="ea-etitle">No incidents yet</div><div class="ea-edesc">Reported incidents appear here</div></div></div>
+              </div>
+              <div id="ep-contacts" class="ea-pg">
+                <div class="ea-stitle" style="margin-bottom:5px">&#128222; Emergency Contacts</div>
+                <p style="font-size:11px;color:#94A3B8;margin-bottom:13px">Tap <strong style="color:#059669">Call Now</strong> to dial directly</p>
+                <div class="ea-cgrid">
+                  <div class="ea-ccard" onclick="eCall('112','Emergency (All)','&#128682;','#FEF2F2','Unified &mdash; Police, Ambulance &amp; Fire')"><div class="ea-ci" style="background:#FEF2F2">&#128682;</div><div><div class="ea-cn">Emergency (All)</div><div class="ea-cd">Unified emergency</div></div><div class="ea-cr"><div class="ea-cnum">112</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('112','Emergency (All)','&#128682;','#FEF2F2','Unified')">&#128222; Call</button></div></div>
+                  <div class="ea-ccard" onclick="eCall('108','Ambulance','&#128657;','#FEF2F2','Medical emergency &amp; rescue')"><div class="ea-ci" style="background:#FEF2F2">&#128657;</div><div><div class="ea-cn">Ambulance</div><div class="ea-cd">Medical emergency</div></div><div class="ea-cr"><div class="ea-cnum">108</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('108','Ambulance','&#128657;','#FEF2F2','Medical')">&#128222; Call</button></div></div>
+                  <div class="ea-ccard" onclick="eCall('100','Police','&#128660;','#EFF6FF','Law enforcement &amp; reporting')"><div class="ea-ci" style="background:#EFF6FF">&#128660;</div><div><div class="ea-cn">Police</div><div class="ea-cd">Law enforcement</div></div><div class="ea-cr"><div class="ea-cnum">100</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('100','Police','&#128660;','#EFF6FF','Police')">&#128222; Call</button></div></div>
+                  <div class="ea-ccard" onclick="eCall('101','Fire Brigade','&#128658;','#FFFBEB','Fire rescue &amp; vehicle fires')"><div class="ea-ci" style="background:#FFFBEB">&#128658;</div><div><div class="ea-cn">Fire Brigade</div><div class="ea-cd">Fire &amp; rescue</div></div><div class="ea-cr"><div class="ea-cnum">101</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('101','Fire Brigade','&#128658;','#FFFBEB','Fire')">&#128222; Call</button></div></div>
+                  <div class="ea-ccard" onclick="eCall('1033','Road Helpline','&#128739;','#F5F3FF','Highway assistance')"><div class="ea-ci" style="background:#F5F3FF">&#128739;</div><div><div class="ea-cn">Road Helpline</div><div class="ea-cd">Highway assistance</div></div><div class="ea-cr"><div class="ea-cnum">1033</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('1033','Road Helpline','&#128739;','#F5F3FF','Highway')">&#128222; Call</button></div></div>
+                  <div class="ea-ccard" onclick="eCall('1078','Disaster Mgmt','&#127754;','#ECFDF5','National disaster helpline')"><div class="ea-ci" style="background:#ECFDF5">&#127754;</div><div><div class="ea-cn">Disaster Mgmt</div><div class="ea-cd">National helpline</div></div><div class="ea-cr"><div class="ea-cnum">1078</div><button class="ea-cbtn" onclick="event.stopPropagation();eCall('1078','Disaster Mgmt','&#127754;','#ECFDF5','Disaster')">&#128222; Call</button></div></div>
+                </div>
+                <div style="margin-top:16px"><div class="ea-card">
+                  <div class="ea-ctitle">&#9888;&#65039; What To Do After an Accident</div>
+                  <div class="ea-tip"><div class="ea-tn">1</div><div class="ea-tt">Stay calm &mdash; check yourself and others for injuries.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">2</div><div class="ea-tt">Call <strong>112</strong> or <strong>108</strong> immediately.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">3</div><div class="ea-tt">Do <strong>not</strong> move injured persons unless in immediate danger.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">4</div><div class="ea-tt">Turn on hazard lights and secure the scene.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">5</div><div class="ea-tt">Collect witness names, numbers, and vehicle details.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">6</div><div class="ea-tt">Report to the nearest police station.</div></div>
+                  <div class="ea-tip"><div class="ea-tn">7</div><div class="ea-tt">Notify your insurance company as soon as possible.</div></div>
+                </div></div>
+              </div>
+            </div>
+            <nav class="ea-bnav">
+              <button class="ea-nb active" data-p="dash" onclick="eGo('dash',this)"><span class="ea-nb-icon">&#127968;</span><span class="ea-nb-lbl">Home</span></button>
+              <button class="ea-nb" data-p="report" onclick="eGo('report',this)"><span class="ea-nb-icon">&#128203;</span><span class="ea-nb-lbl">Report</span></button>
+              <button class="ea-nb" data-p="incs" onclick="eGo('incs',this)"><span class="ea-nb-icon">&#128196;</span><span class="ea-nb-lbl">Incidents</span></button>
+              <button class="ea-nb" data-p="contacts" onclick="eGo('contacts',this)"><span class="ea-nb-icon">&#128222;</span><span class="ea-nb-lbl">Contacts</span></button>
+            </nav>
+          </div>
+        </div>
+        <div class="ea-call-ov" id="eCallOv" onclick="if(event.target===this)eCloseCall()">
+          <div class="ea-call-box">
+            <div class="ea-call-handle"></div>
+            <div class="ea-call-icon" id="eCallIcon"></div>
+            <div class="ea-call-svc">Emergency Service</div>
+            <div class="ea-call-name" id="eCallName"></div>
+            <div class="ea-call-num" id="eCallNum"></div>
+            <div class="ea-call-desc" id="eCallDesc"></div>
+            <div class="ea-call-row">
+              <button class="ea-cancel" onclick="eCloseCall()">Cancel</button>
+              <a class="ea-dial" id="eCallLink" href="#"><span class="ea-ring">&#128222;</span> Call Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="ea-succ-ov" id="eSuccOv">
+          <div class="ea-succ-box">
+            <div class="ea-succ-chk">&#9989;</div>
+            <div class="ea-succ-title">Incident Logged!</div>
+            <div class="ea-succ-id" id="eSuccId"></div>
+            <div class="ea-succ-sub">Nearest response units are being notified. Help is on the way.</div>
+            <button class="ea-btn-p" onclick="document.getElementById('eSuccOv').classList.remove('open')">Done</button>
+          </div>
+        </div>
+        <div class="ea-toast" id="eToast"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// ============================================================
+// SET YOUR VIDEO PATH HERE (leave empty string if no video)
+// Example: const VIDEO_SRC = 'noida-fc-jersey-reveal.mp4';
+const VIDEO_SRC = 'nfcj.mov'; // <-- ▲▲▲ ONLY LINE YOU NEED TO CHANGE ▲▲▲
+// ============================================================
+
+(function initVideo() {
+  const thumbVid   = document.getElementById('nfcThumbVid');
+  const noSrcCard  = document.getElementById('nfcNoSrc');
+  const playOv     = document.getElementById('nfcPlayOverlay');
+  const vidPlayer  = document.getElementById('vidPlayer');
+  const vidNoSrc   = document.getElementById('vidNoSrc');
+
+  if (VIDEO_SRC) {
+    thumbVid.src             = VIDEO_SRC;
+    noSrcCard.style.display  = 'none';
+    playOv.classList.add('show');
+    vidPlayer.src            = VIDEO_SRC;
+    vidPlayer.style.display  = 'block';
+    vidNoSrc.style.display   = 'none';
+  }
+})();
+
+// Hover thumbnail preview
+const nfcCard    = document.getElementById('nfcCard');
+const nfcThumbVid = document.getElementById('nfcThumbVid');
+nfcCard.addEventListener('mouseenter', () => {
+  if (VIDEO_SRC) { nfcThumbVid.style.opacity = '0.6'; nfcThumbVid.play().catch(()=>{}); }
+});
+nfcCard.addEventListener('mouseleave', () => {
+  nfcThumbVid.style.opacity = '0'; nfcThumbVid.pause(); nfcThumbVid.currentTime = 0;
+});
+
+// VIDEO MODAL
+function openVid() {
+  document.getElementById('vidModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (VIDEO_SRC) document.getElementById('vidPlayer').play().catch(()=>{});
+}
+function closeVid() {
+  document.getElementById('vidModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('vidPlayer').pause();
+}
+
+// NAV
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.1});
+document.querySelectorAll('.rev,.rev-g').forEach(el=>obs.observe(el));
+const secs=[...document.querySelectorAll('section[id]')];
+const nls=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-110)cur=s.id});
+  nls.forEach(a=>{a.style.color=a.getAttribute('href')=='#'+cur?'var(--tx)':'';});
+},{passive:true});
+const earsCard=document.querySelector('.proj-card:nth-child(1)');
+const earsOv=earsCard&&earsCard.querySelector('.ears-hover-ov');
+if(earsCard&&earsOv){earsCard.addEventListener('mouseenter',()=>earsOv.style.opacity='1');earsCard.addEventListener('mouseleave',()=>earsOv.style.opacity='0');}
+const kmCard=document.getElementById('kmCard');
+const kmOv=kmCard&&kmCard.querySelector('.km-hover-ov');
+if(kmCard&&kmOv){kmCard.addEventListener('mouseenter',()=>kmOv.style.opacity='1');kmCard.addEventListener('mouseleave',()=>kmOv.style.opacity='0');}
+function handleForm(e){e.preventDefault();showToast('Message sent! I will reply soon.');e.target.reset()}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeVid();closeEars();closeKapilMart();}});
+
+// KAPILMART MODAL
+const KAPILMART_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>KapilMart - Premium E-Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --accent-gold: linear-gradient(135deg, #D4AF37, #B8860B);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --shadow-light: 0 20px 40px rgba(0,0,0,0.1);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            touch-action: manipulation;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.98) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            padding: 0.75rem 0;
+            position: fixed !important;
+            top: 0; width: 100%; z-index: 9999;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 6vw, 2rem);
+            font-weight: 700;
+            background: var(--accent-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link { color: rgba(255,255,255,0.9) !important; font-weight: 500; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.5rem 1rem !important; transition: all 0.3s; }
+        .nav-link:hover, .nav-link:active { color: var(--primary-gold) !important; }
+        .btn-premium {
+            background: var(--accent-gold); border: none; padding: 0.75rem 1.5rem;
+            font-weight: 600; border-radius: 50px; box-shadow: var(--shadow-light);
+            transition: all 0.4s; color: #000; font-size: clamp(0.85rem, 3vw, 1rem);
+            min-height: 44px; min-width: 120px; touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-premium:hover, .btn-premium:active { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .hero-slider { min-height: 100vh; position: relative; padding-top: 70px; }
+        .slider-bg { position: absolute; top: 0; left: 0; width: 400%; height: 100%; }
+        .slide { position: absolute; width: 25%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: all 1s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.5)); }
+        .hero-content { position: relative; z-index: 10; padding: 2rem 1rem; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 10vw, 4rem); line-height: 1.1; background: linear-gradient(135deg, #ffffff, var(--primary-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; }
+        .hero-content .lead { font-size: clamp(1rem, 5vw, 1.4rem); opacity: 0.9; margin-bottom: 2rem; }
+        .slider-indicators { z-index: 20; position: absolute; bottom: 1.5rem; left: 0; right: 0; padding: 0 1rem; }
+        .indicator { width: 14px; height: 14px; border-radius: 50%; margin: 0 8px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s; display: inline-block; }
+        .indicator.active, .indicator:hover { background: var(--primary-gold); transform: scale(1.4); }
+        .products-section, .contact-section { padding: clamp(60px, 10vw, 120px) 0; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 8vw, 3.5rem); font-weight: 600; text-align: center; margin-bottom: 2.5rem; line-height: 1.2; background: linear-gradient(135deg, var(--primary-gold), #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .product-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; transition: all 0.4s; height: 100%; margin-bottom: 1.5rem; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: rgba(212,175,55,0.5); }
+        .product-image { height: clamp(200px, 35vw, 280px); overflow: hidden; position: relative; border-radius: 20px 20px 0 0; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 12px; right: 12px; background: var(--accent-gold); color: #000; padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.75rem; font-weight: 600; }
+        .product-body { padding: clamp(1rem, 4vw, 1.5rem); }
+        .product-title { font-size: clamp(1rem, 4vw, 1.3rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+        .product-desc { font-size: 0.88rem; opacity: 0.8; margin-bottom: 1rem; line-height: 1.4; }
+        .product-price { font-size: clamp(1.3rem, 6vw, 2rem); font-weight: 800; color: var(--primary-gold) !important; margin-bottom: 1rem; }
+        .text-gold { color: var(--primary-gold) !important; }
+        #searchInput { min-height: 44px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.5rem 1rem; border-radius: 25px; backdrop-filter: blur(10px); max-width: clamp(150px, 40vw, 250px); }
+        .offcanvas { background: rgba(15,15,15,0.98); }
+        .cart-item { min-height: 85px; padding: 1rem !important; }
+        .cart-item img { height: 65px; object-fit: cover; border-radius: 12px; }
+        .contact-form { padding: clamp(1.5rem, 6vw, 3rem); }
+        .form-control { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; color: white; padding: 1rem; min-height: 50px; font-size: 1rem; margin-bottom: 1rem; }
+        .form-control::placeholder { color: rgba(255,255,255,0.6); }
+        .form-control:focus { border-color: var(--primary-gold); box-shadow: 0 0 0 0.2rem rgba(212,175,55,0.25); }
+        .footer { padding: 2rem 0 1rem; }
+        .social-links a { font-size: 1.4rem; margin: 0 0.75rem; padding: 0.75rem; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+        @media (max-width: 576px) { .products-section, .contact-section { padding: 50px 0; } .product-image { height: 200px; } .hero-slider { padding-top: 65px; } .navbar { padding: 0.5rem 0; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><i class="fas fa-crown me-2"></i>KapilMart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <div class="d-flex flex-column flex-md-row gap-2 gap-md-0">
+                    <input type="text" id="searchInput" class="form-control bg-transparent border-light text-white" placeholder="Search..." style="border-radius: 25px;">
+                    <button class="btn btn-premium mt-2 mt-md-0 px-3 position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="fas fa-shopping-bag me-1"></i>Bag
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" id="cartCount" style="font-size: 0.7rem; display:none;">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="hero-slider position-relative overflow-hidden">
+        <div class="slider-bg">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1469362102473-8622cfb973cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container text-center position-relative z-10 d-flex align-items-center min-vh-100">
+            <div class="w-100">
+                <h1>Luxury Awaits</h1>
+                <p class="lead">Shop here.</p>
+                <a href="#products" class="btn btn-premium btn-lg px-4">Discover Collection</a>
+            </div>
+        </div>
+        <div class="slider-indicators">
+            <div class="text-center">
+                <div class="d-flex justify-content-center gap-3">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title mb-5">Featured Masterpieces</h2>
+            <div class="row g-4" id="productContainer"></div>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title mb-5">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-3"><input type="text" class="form-control" placeholder="Your Name" required></div>
+                                <div class="col-12 col-md-6 mb-3"><input type="email" class="form-control" placeholder="Your Email" required></div>
+                            </div>
+                            <div class="mb-3"><input type="text" class="form-control" placeholder="Subject" required></div>
+                            <div class="mb-3"><textarea class="form-control" rows="5" placeholder="Tell us about your luxury needs..." required></textarea></div>
+                            <button type="submit" class="btn btn-premium w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="offcanvas offcanvas-end" id="cartOffcanvas" data-bs-backdrop="static">
+        <div class="offcanvas-header border-bottom" style="border-color: rgba(212,175,55,0.3);">
+            <h5 class="offcanvas-title" style="color: var(--primary-gold);">Your Selection</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems">Your selection is empty.</div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="d-flex justify-content-between align-items-center fs-4 fw-bold mb-4">
+                <span>Total:</span> <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn btn-premium w-100 py-3 fs-5" id="checkoutBtn">Secure Checkout</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4 mb-4">
+                    <h5 style="color: var(--primary-gold);">kapilMart</h5>
+                    <p style="opacity: 0.8;">Premium curated collection. Worldwide shipping from India.</p>
+                    <div class="social-links">
+                        <a href="#" style="color:var(--primary-gold)"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:var(--primary-gold)"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" style="color:var(--primary-gold)"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <h6 style="color: var(--primary-gold);">Quick Links</h6>
+                    <ul class="list-unstyled" style="opacity:0.8"><li><a href="#home" style="color:inherit">Home</a></li><li><a href="#products" style="color:inherit">Collection</a></li><li><a href="#contact" style="color:inherit">Contact</a></li></ul>
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <h6 style="color: var(--primary-gold);">Contact</h6>
+                    <p style="opacity: 0.8; font-size:0.9rem;"><i class="fas fa-map-marker-alt me-2"></i>Gurugram, Haryana<br><i class="fas fa-phone me-2"></i>+91 98765 43210<br><i class="fas fa-envelope me-2"></i>hello@kapilmart.in</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center" style="opacity: 0.7;"><p>© 2026 kapilMart. All rights reserved. | Made in India</p></div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"><\/script>
+    <script>
+        const products = [
+            { id: 1, name: 'Coffee Cup', price: 250, imagePath: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&w=400&q=80', desc: 'Premium artisan coffee cup', rating: 4.9 },
+            { id: 2, name: 'MAC M2', price: 185000, imagePath: 'https://images.unsplash.com/photo-1610945262588-d6e4a772f7fc?ixlib=rb-4.0.3&w=400&q=80', desc: 'Apple MacBook M2 Pro', rating: 4.8 },
+            { id: 3, name: 'Headphones', price: 5000, imagePath: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&w=400&q=80', desc: 'Premium wireless headphones', rating: 4.9 },
+            { id: 4, name: 'iPhone 17 Pro', price: 150000, imagePath: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-4.0.3&w=400&q=80', desc: 'Latest iPhone flagship', rating: 4.9 },
+            { id: 5, name: 'Gaming Chair', price: 85000, imagePath: 'https://images.unsplash.com/photo-1588880331178-7fd6f23d2d10?ixlib=rb-4.0.3&w=400&q=80', desc: 'Ergonomic gaming chair', rating: 4.8 },
+            { id: 6, name: 'Leather Jacket', price: 3200, imagePath: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&w=400&q=80', desc: 'Premium leather jacket', rating: 4.9 }
+        ];
+        let cart = [];
+        let slideIndex = 1;
+        function renderProducts(filter = '') {
+            const container = document.getElementById('productContainer');
+            const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
+            container.innerHTML = filtered.map(p => \`
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="product-card h-100">
+                        <div class="product-image">
+                            <img src="\${p.imagePath}" alt="\${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x280/1a1a1a/D4AF37?text=\${encodeURIComponent(p.name)}'">
+                            <div class="product-badge">\${p.rating.toFixed(1)}★</div>
+                        </div>
+                        <div class="product-body">
+                            <h3 class="product-title">\${p.name}</h3>
+                            <p class="product-desc">\${p.desc}</p>
+                            <div class="product-price">₹\${p.price.toLocaleString()}</div>
+                            <div class="mb-3" style="color:#ffc107">\${'★'.repeat(5)}</div>
+                            <button class="btn btn-premium w-100" onclick="addToCart(\${p.id})">
+                                <i class="fas fa-gem me-2"></i>Add to Collection
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            \`).join('') || '<div class="col-12 text-center py-5"><h2 class="section-title">No items found</h2></div>';
+        }
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty += 1; else cart.push({...product, qty: 1});
+            updateCartDisplay();
+        }
+        function updateCartDisplay() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = count;
+            cartCount.style.display = count ? 'block' : 'none';
+            const itemsEl = document.getElementById('cartItems');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            if (cart.length) {
+                itemsEl.innerHTML = cart.map(item => \`
+                    <div class="cart-item">
+                        <div class="row align-items-center">
+                            <div class="col-3"><img src="\${item.imagePath}" class="img-fluid rounded" alt="\${item.name}" onerror="this.src='https://placehold.co/65x65/1a1a1a/D4AF37?text=Item'"></div>
+                            <div class="col-6"><h6>\${item.name}</h6><small style="color: rgba(255,255,255,0.7);">₹\${item.price.toLocaleString()} × \${item.qty}</small></div>
+                            <div class="col-3 text-end"><div class="fw-bold fs-5" style="color:var(--primary-gold)">₹\${(item.price * item.qty).toLocaleString()}</div><button class="btn btn-sm btn-outline-danger mt-2 w-100" onclick="removeFromCart(\${item.id})">Remove</button></div>
+                        </div>
+                    </div>
+                \`).join('');
+            } else {
+                itemsEl.innerHTML = '<div class="text-center py-5"><i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i><h5 class="text-muted">Your collection is empty</h5></div>';
+            }
+            document.getElementById('cartTotal').textContent = \`₹\${total.toLocaleString()}\`;
+        }
+        function removeFromCart(id) { cart = cart.filter(c => c.id !== id); updateCartDisplay(); }
+        function currentSlide(n) { showSlides(slideIndex = n); }
+        function showSlides(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.indicator').forEach(i => i.classList.remove('active'));
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            if (slides[n-1]) slides[n-1].classList.add('active');
+            if (indicators[n-1]) indicators[n-1].classList.add('active');
+        }
+        let startX = 0;
+        document.querySelector('.hero-slider').addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+        document.querySelector('.hero-slider').addEventListener('touchend', e => {
+            if (!startX) return;
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) { slideIndex = diff > 0 ? slideIndex + 1 : slideIndex - 1; if (slideIndex > 4) slideIndex = 1; if (slideIndex < 1) slideIndex = 4; showSlides(slideIndex); }
+            startX = 0;
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(); updateCartDisplay(); showSlides(slideIndex);
+            document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior: 'smooth'}); }); });
+            document.getElementById('searchInput').addEventListener('input', e => renderProducts(e.target.value));
+            document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); alert('Thank you! We will contact you within 24 hours. 📧'); e.target.reset(); });
+            document.getElementById('checkoutBtn').addEventListener('click', () => {
+                const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+                const totalAmount = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+                if (cart.length) alert(\`🛍️ Checkout\\n\\nItems: \${totalItems}\\nTotal: ₹\${totalAmount.toLocaleString()}\\n\\nReady for payment integration!\`);
+            });
+            setInterval(() => { slideIndex++; if (slideIndex > 4) slideIndex = 1; showSlides(slideIndex); }, 5000);
+        });
+    <\/script>
+</body>
+</html>`;
+
+let kmLoaded = false;
+function openKapilMart() {
+  const modal = document.getElementById('kmModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  if (!kmLoaded) {
+    const frame = document.getElementById('kmFrame');
+    const blob = new Blob([KAPILMART_HTML], {type: 'text/html'});
+    frame.src = URL.createObjectURL(blob);
+    kmLoaded = true;
+  }
+}
+function closeKapilMart() {
+  document.getElementById('kmModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// EARS MODAL
+function openEars(){document.getElementById('earsModal').classList.add('open');document.body.style.overflow='hidden';eUpdDash()}
+function closeEars(){document.getElementById('earsModal').classList.remove('open');document.body.style.overflow=''}
+let eIncs=[],eNextId=1,eActFil={sev:'',sta:''};
+setInterval(()=>{const el=document.getElementById('eClock');if(el)el.textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})},1000);
+document.getElementById('eClock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+function eGo(name,btn){document.querySelectorAll('.ea-pg').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ea-nb,.ea-sb-btn').forEach(b=>b.classList.remove('active'));document.getElementById('ep-'+name).classList.add('active');document.querySelectorAll('[data-p="'+name+'"]').forEach(b=>b.classList.add('active'));if(name==='incs')eRenderAll();if(name==='dash')eUpdDash();}
+function eSubmit(){const type=document.getElementById('eType').value;const loc=document.getElementById('eLoc').value.trim();const sev=document.querySelector('input[name="esev"]:checked');if(!type){eToast('Select accident type');return}if(!loc){eToast('Enter location');return}if(!sev){eToast('Select severity');return}const inc={id:'INC-'+String(eNextId++).padStart(4,'0'),type,location:loc,severity:sev.value,injured:parseInt(document.getElementById('eInj').value)||0,fatal:parseInt(document.getElementById('eFat').value)||0,vehicles:document.getElementById('eVeh').value,notes:document.getElementById('eNotes').value,reporter:document.getElementById('eRep').value||'Anonymous',status:'active',time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};eIncs.unshift(inc);eClear();eUpdDash();document.getElementById('eSuccId').textContent=inc.id;document.getElementById('eSuccOv').classList.add('open');}
+function eClear(){['eType','eLoc','eNotes','eRep'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});document.getElementById('eInj').value=0;document.getElementById('eFat').value=0;document.getElementById('eVeh').value=4;const c=document.querySelector('input[name="esev"]:checked');if(c)c.checked=false;}
+function eResolve(id){const i=eIncs.find(x=>x.id===id);if(i){i.status='resolved';eRenderAll();eUpdDash();eToast('Marked resolved')}}
+function eDelete(id){if(!confirm('Delete this incident?'))return;eIncs=eIncs.filter(x=>x.id!==id);eRenderAll();eUpdDash();eToast('Deleted')}
+function eFilter(sev,sta,btn){eActFil={sev,sta};document.querySelectorAll('.ea-chip').forEach(c=>c.classList.remove('active'));btn.classList.add('active');eRenderAll()}
+function eCard(i,acts){return`<div class="ea-inc"><div class="ea-sbar ${i.severity}"></div><div class="ea-ibody"><div class="ea-itop"><span class="ea-badge ${i.severity}">${i.severity.toUpperCase()}</span><span class="ea-badge ${i.status}">${i.status==='active'?'Active':'Resolved'}</span><span class="ea-iid">${i.id}</span></div><div class="ea-itype">${i.type}</div><div class="ea-iloc">${i.location}</div><div class="ea-imeta"><span class="ea-im">${i.vehicles} vehicles</span><span class="ea-im">${i.injured} injured</span>${i.fatal>0?`<span class="ea-im" style="color:#B91C1C">${i.fatal} fatal</span>`:''}<span class="ea-im">${i.time}</span></div></div>${acts?`<div class="ea-iacts">${i.status==='active'?`<button class="ea-abt resolve" onclick="eResolve('${i.id}')">Resolve</button>`:''}<button class="ea-abt delete" onclick="eDelete('${i.id}')">Delete</button></div>`:''}</div>`;}
+function eRenderAll(){const d=eIncs.filter(i=>{if(eActFil.sev&&i.severity!==eActFil.sev)return false;if(eActFil.sta&&i.status!==eActFil.sta)return false;return true});document.getElementById('eAll').innerHTML=d.length?d.map(i=>eCard(i,true)).join(''):'<div class="ea-empty"><div class="ea-ei">&#128196;</div><div class="ea-etitle">No incidents found</div><div class="ea-edesc">Try adjusting filters</div></div>';}
+function eUpdDash(){const tot=eIncs.length,act=eIncs.filter(i=>i.status==='active').length,res=eIncs.filter(i=>i.status==='resolved').length,crit=eIncs.filter(i=>i.severity==='critical'&&i.status==='active').length;document.getElementById('es-t').textContent=tot;document.getElementById('es-a').textContent=act;document.getElementById('es-r').textContent=res;document.getElementById('es-c').textContent=crit;document.getElementById('eCrit').textContent=crit;document.getElementById('eAlert').style.display=crit>0?'':'none';const rec=eIncs.slice(0,5);document.getElementById('eRecent').innerHTML=rec.length?rec.map(i=>eCard(i,false)).join(''):'<div class="ea-empty"><div class="ea-ei">&#128461;</div><div class="ea-etitle">No incidents yet</div><div class="ea-edesc">Tap Report to get started</div></div>';}
+function eCall(num,name,icon,bg,desc){document.getElementById('eCallIcon').textContent=icon;document.getElementById('eCallIcon').style.background=bg;document.getElementById('eCallName').textContent=name;document.getElementById('eCallNum').textContent=num;document.getElementById('eCallDesc').textContent=desc;document.getElementById('eCallLink').href='tel:'+num;document.getElementById('eCallOv').classList.add('open');}
+function eCloseCall(){document.getElementById('eCallOv').classList.remove('open')}
+function eToast(m){const t=document.getElementById('eToast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+eUpdDash();
+</script>
+</body>
+</html>
